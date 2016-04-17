@@ -1,0 +1,51 @@
+<div class="panel panel-info">
+  <div class="panel-heading" ng-hide="stop.loading">
+    <h3>
+      <stop-name stop="stop.departures.stop_name"></stop-name>
+    </h3>
+  </div>
+  <div class="panel-body" ng-show="stop.loading">
+    <loader loading="stop.loading"/>
+  </div>
+  <div class="panel-body" ng-hide="stop.loading">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <button class="btn btn-block"
+            ng-class="{'btn-success': stop.showPast, 'btn-default': !stop.showPast}"
+            ng-click="stop.toggleShowPast()">
+            {{ 'SHOW_PAST_DEPARTURES' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <accordion>
+      <accordion-group
+        class="full-accordion"
+        ng-repeat="day in stop.departures.departures"
+        heading="{{day.daytype}}"
+        ng-if="day.departures.length > 0">
+        <table class="table table-hover table-condensed table-responsive table-striped stop-departures">
+          <tr class="header">
+            <th>{{ 'LINE' | translate }}</th>
+            <th>{{ 'DIRECTION' | translate }}</th>
+            <th>{{ 'DEPARTURE' | translate }}</th>
+          </tr>
+          <tr ng-repeat="row in day.departures"
+            ng-click="stop.showTrip(stop.stop, row.line, row.dirnumber, day.daytype_id, row.tripnumber)"
+            ng-show="stop.checkTimes({{row.hour}} + ':' + {{row.min}}, stop.currentTime, '23:59') || stop.showPast">
+            <td data-label="{{ 'LINE' | translate }}">
+              {{row.line}}
+            </td>
+            <td data-label="{{ 'DIRECTION' | translate }}">
+              {{row.directionname}}
+            </td>
+            <td data-label="{{ 'DEPARTURE' | translate }}">
+              <departure-minute departure="row" hour="row.hour" show-hour="true"></departure-minute>
+            </td>
+          </tr>
+        </table>
+      </accordion-group>
+    </accordion>
+  </div>
+</div>

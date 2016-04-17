@@ -1,0 +1,25 @@
+<div class="row">
+  <loader loading="line.loading" />
+</div>
+
+<div class="row">
+  <div class="col-sm-6 col-xs-12" ng-repeat="direction in line.routes">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3>
+          <i class="fa fa-arrow-circle-o-right"></i>
+          {{direction.name}}
+        </h3>
+      </div>
+      <div class="panel-body panel-body-no-padding">
+        <ul class="nav nav-pills nav-stacked nav-route">
+          <li ng-repeat="stop in direction.stops">
+            <a ui-sref="departures({line: stop.line, direction: stop.dirnuber, stop: stop.stopid})">
+              <stop-name stop="stop"></stop-name>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

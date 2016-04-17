@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <h3 class="modal-title">
+      {{ 'TRIP' | translate }}
+    </h3>
+</div>
+<div class="modal-body" ng-show="vm.loading">
+  <loader loading="vm.loading" />
+</div>
+<div class="modal-body" ng-hide="vm.loading">
+  <ul class="nav nav-pill nav-stacked trip">
+    <li ng-repeat="stop in vm.trip" ng-class="{'active': vm.stop == stop.id}">
+      <a class="row" ui-sref="departures({line: vm.line, direction: vm.direction, stop: stop.id})" ng-click="vm.close()">
+        <div class="col-xs-2">
+          {{stop.hour}}:{{stop.min}}
+        </div>
+        <div class="col-xs-10">
+          <stop-name stop="stop"></stop-name>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="vm.close()">{{ 'CLOSE' | translate }}</button>
+</div>

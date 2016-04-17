@@ -1,0 +1,9 @@
+.trip {
+  > li > a {
+    padding: 4px;
+  } 
+  > li.active > a {
+    color: white;
+    background-color: #23527c;
+  }
+}

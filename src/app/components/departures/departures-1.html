@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-xs-12" ng-repeat="($dayIndex, day) in departures.departures" ng-if="day.count > 0">
+    <div class="panel panel-default panel-departures panel-day-{{$dayIndex + 1}}">
+      <div class="panel-heading">
+        <h4>{{day.daytype}}</h4>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="hour-block" ng-repeat="deps in day.departures" ng-if="deps.minutes.length > 0">
+            <strong>
+            {{deps.hour}}
+          </strong>
+            <sup>
+            <a class="minute" ng-repeat="minute in deps.minutes"
+              ui-sref="departures.trip({line: departures.line, direction: departures.dir_no, stop: departures.stop_name.id, day: day.daytype_number, trip: minute.tripnumber})">
+              <departure-minute departure="minute" hour="deps.hour" show-hour="false"></departure-minute>
+            </a>
+          </sup>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+.table-departures {
+  tr.hours {
+    @media print {
+      td {
+        background-color: lightgray !important;
+        font-weight: 700;
+        text-align: center;
+        border: 1px solid white;
+      }
+    }
+  }
+}

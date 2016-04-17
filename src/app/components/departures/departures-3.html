@@ -1,0 +1,19 @@
+<table class="table table-hover table-condensed table-striped table-bordered">
+  <tr>
+    <td></td>
+    <td ng-repeat="($dayIndex, day) in departures.departures" ng-if="day.count > 0" class="text-center day-{{$dayIndex + 1}}">
+      {{day.daytype}}
+    </td>
+  </tr>
+  <tr ng-repeat="($hourIndex, hour) in departures.hours">
+    <td>
+      <strong>{{hour}}</strong>
+    </td>
+    <td ng-repeat="deps in departures.departures" ng-if="deps.count > 0">
+      <a ng-repeat="minute in deps.departures[$hourIndex].minutes"
+        ui-sref="departures.trip({line: departures.line, direction: departures.dir_no, stop: departures.stop_name.id, day: deps.daytype_number, trip: minute.tripnumber})">
+        <departure-minute departure="minute" hour="deps.departures[$hourIndex].hour" show-hour="false"></departure-minute>
+      </a>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,64 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3>{{ 'SETTINGS' | translate }}</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="form-group">
+        <label class="control-label col-xs-3">{{ 'SHOW_PAST' | translate }}:</label>
+        <div class="col-xs-9">
+          <ui-select ng-model="settings.$storage.minutesThreshold" theme="selectize" on-select="settings.saved()">
+            <ui-select-match>
+              <span ng-cloak>{{$select.selected}} {{ 'MINUTES' | translate }}</span>
+            </ui-select-match>
+            <ui-select-choices repeat="item in settings.minutes">
+              <span ng-cloak>{{item}} {{ 'MINUTES' | translate }}</span>
+            </ui-select-choices>
+          </ui-select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <label class="control-label col-xs-3">
+          {{ 'PLAQUE_STYLE' | translate }}
+        </label>
+        <div class="col-xs-9">
+          <ui-select ng-model="settings.$storage.plaqueStyle" theme="selectize" on-select="settings.saved()">
+            <ui-select-match>
+              <span ng-cloak>
+                {{$select.selected.name}} ({{$select.selected.number}})
+              </span>
+            </ui-select-match>
+            <ui-select-choices repeat="item in settings.plaquesStyles">
+              <span ng-clock>
+                {{item.name}} ({{item.number}})
+              </span>
+            </ui-select-choices>
+          </ui-select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <label class="control-label col-xs-3">
+          {{ 'LANGUAGE' | translate }}
+        </label>
+        <div class="col-xs-9">
+          <ui-select ng-model="settings.language" theme="selectize" on-select="settings.saveLang()">
+            <ui-select-match>
+              <span ng-cloak>
+                {{$select.selected.name | translate}}
+              </span>
+            </ui-select-match>
+            <ui-select-choices repeat="item in settings.languages">
+              <span ng-clock>
+                {{item.name | translate}}
+              </span>
+            </ui-select-choices>
+          </ui-select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,112 @@
+$departure-colors: #522B72 #E5A977 #909CB5 #00cc66;
+
+.hour-block {
+  display: inline-block;
+  padding: 5px;
+  font-size: 1.33em;
+  @media screen and (max-width: $screen-xs) {
+    display: block;
+  }
+}
+
+.departure-header {
+  @media screen {
+    h1,
+    h2,
+    span {
+      color: #4CAF50 !important;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    h2 {
+      font-size: 30px;
+    }
+  }
+  @media print {
+    h1, h2 {
+      margin-top: 0; 
+      margin-bottom: 0;
+    }
+  } 
+}
+
+h1.line {
+  text-align: center;
+  border-right: 1px solid #31708F;
+  @media screen and (max-width: 768px) {
+    border-right: none;
+  }
+}
+
+.panel-departures {
+  border: none;
+  margin-bottom: 0;
+  border-radius: 0;
+  > .panel-heading {
+    border-radius: 0;
+  }
+}
+
+.nav-route {
+  > li > a {
+    border-radius: 0;
+  }
+  @media print {
+    & > li {
+      font-size: 0.9em;
+    }
+    & > li.active a {
+      background-color: lightgrey !important;
+      font-weight: 900;
+    }
+    & > li > a {
+      padding: 0 4px;
+    }
+  }
+}
+
+@for $i from 1 through length($departure-colors) {
+    $color: nth($departure-colors, $i);
+    $dark: darken($color, 30%);
+    $light: lighten($color, 60%);
+
+    @media print {
+      .table > tbody > tr > td.day-#{$i} {
+          &.day-#{$i} {
+            background-color: lightgray !important;
+            font-weight: 700;
+            font-size: 1.2em;
+          }
+        }
+        .panel-day-#{$i} {
+            border-color: $dark !important;
+            > .panel-heading {
+                background-color: lightgray !important;
+                font-weight: 700;
+                font-size: 1.2em;
+            }
+        }
+    }
+
+    @media screen {
+        .table > tbody > tr > td.day-#{$i} {
+          &.day-#{$i} {
+            background-color: $color;
+            color: $light;
+          }
+        }
+        .panel-day-#{$i} {
+            border-color: $dark !important;
+            > .panel-heading {
+                background-color: $color !important;
+                color: $light !important;
+                h4 {
+                    a {
+                        color: $light !important;
+                    }
+                    color: $light !important;
+                }
+            }
+        }
+    }
+}

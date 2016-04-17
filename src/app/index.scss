@@ -1,0 +1,108 @@
+/**
+ *  If you want to override some bootstrap variables, you have to change values here.
+ *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
+ */
+$navbar-inverse-link-color: #5AADBB;
+$icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+
+// @import 'bootstrap.min.css.scss';
+
+#footer {
+  border-top: 1px solid black;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.thumbnail {
+  height: 200px;
+
+  img.pull-right {
+    width: 50px;
+  }
+}
+
+.full-accordion {
+	.panel-heading {
+		padding: 0;
+		.panel-title a {
+			padding: 10px 15px;
+			display: block;
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+//.clearfix {
+//  clear: both;
+//}
+
+.nav-condenced {
+  > li > a {
+    padding: 4px;
+  }
+}
+
+.modal-content {
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+
+    .modal-header {
+        border-bottom: none;
+        h3, h4, button.close {
+            color: white;
+            text-shadow: 3px 3px 10px black;
+        }
+        button.close {
+            opacity: 1;
+            &:hover {
+                opacity: 0.5px;
+            }
+        }
+    }
+    .modal-body {
+        background-color: white;
+        border-radius: 7px;
+    }
+}
+
+.panel {
+  .panel-body.panel-body-no-padding {
+    padding: 0;
+  }  
+}
+
+.alert {
+  &.small-padding {
+    padding: 4px;
+  }
+}
+
+@media print {
+  .container {
+    width: 100% !important;
+  }
+}
+
+/**
+ *  Do not remove the comments below. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector
